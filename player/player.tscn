@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfa3xni5hj64u"]
+[gd_scene load_steps=6 format=3 uid="uid://cfa3xni5hj64u"]
 
 [ext_resource type="Script" uid="uid://dtbosehmi0bt2" path="res://player/scripts/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://55xw6dqq6fdy" path="res://player/states/idle.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://6cxo7p4dm7uk" path="res://player/states/run.gd" id="3_g1dw6"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
 size = Vector2(18, 48)
@@ -19,3 +21,11 @@ texture = SubResource("PlaceholderTexture2D_kqu6x")
 position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_oul6g")
 debug_color = Color(0, 0.6, 0.69803923, 0.25490198)
+
+[node name="States" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource("2_rkbax")
+
+[node name="Run" type="Node" parent="States"]
+script = ExtResource("3_g1dw6")
