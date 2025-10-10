@@ -1,57 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjnihxe6dv1ul"]
-
-[ext_resource type="Texture2D" uid="uid://c33nsadk1u133" path="res://addons/michael_games_editor_plugins/assets/curved_arrow.png" id="1_3otb6"]
+[gd_scene load_steps=2 format=3 uid="uid://cjnihxe6dv1ul"]
 
 [sub_resource type="GDScript" id="GDScript_ibks0"]
 script/source = "extends Control
 
 
-@onready var c1: Control = $Control
-@onready var c2: Control = $Control2
-@onready var c3: Control = $Control3
-
-@export var active_color : Color
 
 func _ready() -> void:
-	reset_modulate()
-	modulate_state( c1, active_color )
+	
 	pass
-
-
-func reset_modulate() -> void:
-	modulate_state( c1 )
-	modulate_state( c2 )
-	modulate_state( c3 )
-	pass
-
-func modulate_state( c : Control, color : Color = Color(0.482, 0.482, 0.482, 1.0) ) -> void:
-	c.modulate = color
-	pass
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed( \"left\" ) or event.is_action_pressed( \"right\" ):
-		reset_modulate()
-		modulate_state( c2, active_color )
-	elif event.is_action_pressed(\"jump\"):
-		reset_modulate()
-		modulate_state( c3, active_color )
-	elif event.is_action_released(\"left\") or event.is_action_released(\"right\") or event.is_action_released(\"jump\"):
-		reset_modulate()
-		modulate_state( c1, active_color )
 "
-
-[sub_resource type="Gradient" id="Gradient_ibks0"]
-offsets = PackedFloat32Array(0.89, 0.9, 0.99, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3otb6"]
-gradient = SubResource("Gradient_ibks0")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
 
 [node name="Blackboard" type="Control"]
 texture_filter = 2
@@ -62,7 +19,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_ibks0")
-active_color = Color(0.9225517, 0.32571235, 0.28017226, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -77,52 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.15127608, 0.15127608, 0.15127608, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.4045111, 0.40451115, 0.4045111, 1)
-layout_mode = 0
-offset_left = 376.0
-offset_top = 61.999996
-offset_right = 632.0
-offset_bottom = 318.0
-rotation = 1.8273972
-scale = Vector2(0.31642866, 0.31642866)
-texture = ExtResource("1_3otb6")
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-modulate = Color(0.4045111, 0.40451115, 0.4045111, 1)
-layout_mode = 0
-offset_left = 221.99997
-offset_top = 207.0
-offset_right = 477.99997
-offset_bottom = 463.0
-rotation = 4.9062314
-scale = Vector2(0.31642866, 0.31642866)
-texture = ExtResource("1_3otb6")
-
-[node name="TextureRect3" type="TextureRect" parent="."]
-modulate = Color(0.4045111, 0.40451115, 0.4045111, 1)
-layout_mode = 0
-offset_left = 116.000015
-offset_top = 137.0
-offset_right = 372.0
-offset_bottom = 393.0
-rotation = 4.532253
-scale = Vector2(0.31642866, 0.31642866)
-texture = ExtResource("1_3otb6")
-flip_h = true
-
-[node name="TextureRect4" type="TextureRect" parent="."]
-modulate = Color(0.4045111, 0.40451115, 0.4045111, 1)
-layout_mode = 0
-offset_left = 211.0
-offset_top = 130.99998
-offset_right = 467.0
-offset_bottom = 387.0
-rotation = 1.2108667
-scale = Vector2(0.1484419, 0.1484419)
-texture = ExtResource("1_3otb6")
-flip_h = true
-
 [node name="Label" type="Label" parent="."]
 modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
 layout_mode = 1
@@ -131,172 +41,25 @@ offset_top = 16.0
 offset_right = 134.0
 offset_bottom = 39.0
 scale = Vector2(0.6442511, 0.6442511)
-text = "PLAYER STATES"
+text = "PLAYER IDLE & RUN STATES"
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 110.0
-offset_top = 64.0
-offset_right = 226.0
-offset_bottom = 82.0
+offset_left = -89.0
+offset_top = 59.0
+offset_right = 70.0
+offset_bottom = 209.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 10
-text = "press \"jump\""
-vertical_alignment = 1
+text = "1) Review homework assignment
 
-[node name="Label5" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -174.0
-offset_top = 67.0
-offset_right = -58.0
-offset_bottom = 85.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 10
-text = "press \"left\" or \"right\""
-vertical_alignment = 1
+2) Address Input drift defect
 
-[node name="Label6" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -26.0
-offset_top = 160.0
-offset_right = 90.0
-offset_bottom = 191.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 10
-text = "player is 
-on floor"
-horizontal_alignment = 1
-vertical_alignment = 1
+3) PlayerState updates
 
-[node name="Label7" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -91.0
-offset_top = 152.0
-offset_right = 25.0
-offset_bottom = 183.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 10
-text = "releases
-button(s)"
-horizontal_alignment = 1
-vertical_alignment = 1
+4) Idle state code
 
-[node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -99.0
-offset_right = 50.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_3otb6")
-expand_mode = 3
-
-[node name="Label2" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "IDLE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control2" type="Control" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -10.0
-offset_right = -60.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_3otb6")
-expand_mode = 3
-
-[node name="Label2" type="Label" parent="Control2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "RUN"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control3" type="Control" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 68.0
-offset_top = -10.0
-offset_right = 168.0
-offset_bottom = 90.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Control3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_3otb6")
-expand_mode = 3
-
-[node name="Label2" type="Label" parent="Control3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "JUMP"
-horizontal_alignment = 1
-vertical_alignment = 1
+5) Run state code"
