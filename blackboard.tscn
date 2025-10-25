@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjnihxe6dv1ul"]
+[gd_scene load_steps=9 format=3 uid="uid://cjnihxe6dv1ul"]
+
+[ext_resource type="Texture2D" uid="uid://cen5khq5f2rux" path="res://player/sprites/hero.png" id="1_3otb6"]
 
 [sub_resource type="GDScript" id="GDScript_ibks0"]
 script/source = "extends Control
@@ -9,6 +11,34 @@ func _ready() -> void:
 	
 	pass
 "
+
+[sub_resource type="Gradient" id="Gradient_bicc1"]
+offsets = PackedFloat32Array(0.99, 0.991, 0.999, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k8u6i"]
+gradient = SubResource("Gradient_bicc1")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_xtl8c"]
+offsets = PackedFloat32Array(0.92, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ntenn"]
+gradient = SubResource("Gradient_xtl8c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_er0on"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b6sl7"]
+gradient = SubResource("Gradient_er0on")
 
 [node name="Blackboard" type="Control"]
 texture_filter = 2
@@ -25,13 +55,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -849.77783
-offset_top = -478.0
-offset_right = 849.77783
-offset_bottom = 478.0
+offset_left = -3958.0
+offset_top = -2480.0
+offset_right = 3958.0
+offset_bottom = 2480.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
@@ -40,20 +71,18 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 134.0
 offset_bottom = 39.0
-scale = Vector2(0.6442511, 0.6442511)
-text = "PLAYER IDLE & RUN STATES"
+text = "DYNAMIC, VELOCITY BASED JUMP & FALL ANIMATIONS"
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -89.0
-offset_top = 59.0
-offset_right = 70.0
-offset_bottom = 209.0
+offset_left = -670.0
+offset_top = 215.0
+offset_right = -415.0
+offset_bottom = 446.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 10
 text = "1) Review homework assignment
 
 2) Address Input drift defect
@@ -63,3 +92,216 @@ text = "1) Review homework assignment
 4) Idle state code
 
 5) Run state code"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 476.0
+offset_right = 2.0
+offset_bottom = 499.0
+grow_horizontal = 2
+text = "v = -400"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_top = 298.0
+offset_right = 29.0
+offset_bottom = 321.0
+grow_horizontal = 2
+text = "v = -200"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -10.0
+offset_top = 160.0
+offset_right = 81.0
+offset_bottom = 183.0
+grow_horizontal = 2
+text = "v = -80"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 356.0
+offset_top = 157.0
+offset_right = 447.0
+offset_bottom = 180.0
+grow_horizontal = 2
+text = "v = 80"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 420.0
+offset_top = 308.0
+offset_right = 511.0
+offset_bottom = 331.0
+grow_horizontal = 2
+text = "v = 200"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.36078432)
+texture_filter = 2
+layout_mode = 0
+offset_left = 272.0
+offset_top = -278.0
+offset_right = 648.0
+offset_bottom = 505.0
+texture = SubResource("GradientTexture2D_k8u6i")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 494.0
+offset_right = 282.0
+offset_bottom = 514.0
+texture = SubResource("GradientTexture2D_ntenn")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="TextureRect2"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 12.0
+texture = SubResource("GradientTexture2D_b6sl7")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 317.0
+offset_right = 303.0
+offset_bottom = 337.0
+texture = SubResource("GradientTexture2D_ntenn")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="TextureRect3"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 12.0
+texture = SubResource("GradientTexture2D_b6sl7")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 176.0
+offset_right = 359.0
+offset_bottom = 196.0
+texture = SubResource("GradientTexture2D_ntenn")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="TextureRect4"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 12.0
+texture = SubResource("GradientTexture2D_b6sl7")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 193.0
+offset_right = 595.0
+offset_bottom = 213.0
+rotation = 3.1415927
+texture = SubResource("GradientTexture2D_ntenn")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="TextureRect5"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 12.0
+texture = SubResource("GradientTexture2D_b6sl7")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 345.0
+offset_right = 660.0
+offset_bottom = 365.0
+rotation = 3.1415927
+texture = SubResource("GradientTexture2D_ntenn")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="TextureRect6"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 12.0
+texture = SubResource("GradientTexture2D_b6sl7")
+expand_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(112, 424)
+scale = Vector2(2, 2)
+texture = ExtResource("1_3otb6")
+hframes = 16
+vframes = 4
+frame = 24
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(130, 248)
+scale = Vector2(2, 2)
+texture = ExtResource("1_3otb6")
+hframes = 16
+vframes = 4
+frame = 25
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(195, 109)
+scale = Vector2(2, 2)
+texture = ExtResource("1_3otb6")
+hframes = 16
+vframes = 4
+frame = 26
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(724, 102)
+scale = Vector2(2, 2)
+texture = ExtResource("1_3otb6")
+hframes = 16
+vframes = 4
+frame = 27
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(797, 253)
+scale = Vector2(2, 2)
+texture = ExtResource("1_3otb6")
+hframes = 16
+vframes = 4
+frame = 28
