@@ -15,6 +15,10 @@ run/main_scene="uid://cilmdg5tpbdkk"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bn3bmyqingnk6"
 
+[autoload]
+
+SceneManager="*res://00_global/scene_manager/scene_manager.tscn"
+
 [display]
 
 window/size/viewport_width=480
@@ -26,6 +30,10 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/michael_games_editor_plugins/plugin.cfg")
+
+[global_group]
+
+Player=""
 
 [input]
 
@@ -87,6 +95,7 @@ action={
 
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="One Way Platform"
+2d_physics/layer_5="Player"
 
 [rendering]
 
