@@ -1,12 +1,12 @@
 [gd_scene load_steps=20 format=4 uid="uid://cilmdg5tpbdkk"]
 
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="1_fvrtv"]
-[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="2_pu3y4"]
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="3_1pu88"]
 [ext_resource type="PackedScene" uid="uid://coi0vcyvfj31x" path="res://general/level_transition/level_transition.tscn" id="4_vhcel"]
 [ext_resource type="PackedScene" uid="uid://28f38bmicoga" path="res://levels/props/plant.tscn" id="5_qmxb0"]
 [ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="6_chwhs"]
 [ext_resource type="Material" uid="uid://l4p5rfj3wr28" path="res://materials_and_shaders/fog_fade_material.tres" id="7_72pnk"]
+[ext_resource type="PackedScene" uid="uid://cpu56uihpy3rm" path="res://general/player_spawn/player_spawn.tscn" id="7_vdj2u"]
 
 [sub_resource type="Gradient" id="Gradient_qmxb0"]
 colors = PackedColorArray(0.5529412, 0.7647059, 0.7294118, 1, 0.28235295, 0.45490196, 0.5254902, 0)
@@ -85,14 +85,14 @@ width = 1120
 height = 334
 metadata/_custom_type_script = "uid://cced2sotnp1k3"
 
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_vdj2u")]
+position = Vector2(61, 222)
+
 [node name="LevelTransition" parent="." instance=ExtResource("4_vhcel")]
 position = Vector2(1088, 192)
 size = 12
 location = 1
 target_level = "uid://cc0jawhlxy1go"
-
-[node name="Player" parent="." instance=ExtResource("2_pu3y4")]
-position = Vector2(109, 213)
 
 [node name="BGParallaxLayers" type="Node2D" parent="."]
 
@@ -275,9 +275,11 @@ speed_scale = 1.4
 flip_h = true
 
 [node name="ForegroundElements" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="LightStreamParallax2D7" type="Parallax2D" parent="ForegroundElements"]
 scroll_scale = Vector2(1.1, 1)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ForegroundElements/LightStreamParallax2D7"]
 modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.2509804)
@@ -311,6 +313,7 @@ offset = Vector2(0, 256)
 
 [node name="LightStreamsParallax2D8" type="Parallax2D" parent="ForegroundElements"]
 scroll_scale = Vector2(1.2, 1)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="ForegroundElements/LightStreamsParallax2D8"]
 modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.06666667)
@@ -321,6 +324,7 @@ rotation = 0.23336263
 scale = Vector2(0.9692546, 1)
 texture = ExtResource("6_chwhs")
 offset = Vector2(0, 256)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="ForegroundElements/LightStreamsParallax2D8"]
 modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.06666667)
@@ -331,6 +335,7 @@ rotation = 0.23336263
 scale = Vector2(0.44680393, 1)
 texture = ExtResource("6_chwhs")
 offset = Vector2(0, 256)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="ForegroundElements/LightStreamsParallax2D8"]
 modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.06666667)
@@ -341,6 +346,7 @@ rotation = 0.23336263
 scale = Vector2(0.9692546, 1)
 texture = ExtResource("6_chwhs")
 offset = Vector2(0, 256)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="ForegroundElements/LightStreamsParallax2D8"]
 modulate = Color(1.1638972, 0.9554805, 0.3664772, 0.06666667)
@@ -351,11 +357,13 @@ rotation = 0.23336263
 scale = Vector2(0.717886, 1)
 texture = ExtResource("6_chwhs")
 offset = Vector2(0, 256)
+metadata/_edit_lock_ = true
 
 [node name="Foreground" type="Parallax2D" parent="ForegroundElements"]
 modulate = Color(0.04198642, 0.05812233, 0.04601289, 1)
 z_index = 10
 scroll_scale = Vector2(1.4, 1)
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ForegroundElements/Foreground"]
 position = Vector2(100, 0)
@@ -374,6 +382,7 @@ modulate = Color(0, 0, 0, 1)
 z_index = 10
 scroll_scale = Vector2(1.6, 1)
 scroll_offset = Vector2(70, 0)
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="ForegroundElements/Foreground2"]
 position = Vector2(189, 0)
@@ -414,6 +423,7 @@ position = Vector2(257, 241)
 texture = SubResource("NoiseTexture2D_vdj2u")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 6
 material = SubResource("CanvasItemMaterial_72pnk")
 position = Vector2(529, 166)
 amount = 50

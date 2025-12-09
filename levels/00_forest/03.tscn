@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://coi0vcyvfj31x" path="res://general/level_transition/level_transition.tscn" id="3_vv2jw"]
 [ext_resource type="PackedScene" uid="uid://28f38bmicoga" path="res://levels/props/plant.tscn" id="4_7vwju"]
 [ext_resource type="PackedScene" uid="uid://b3c1xq1cvkdkd" path="res://levels/props/torch.tscn" id="5_nqq0o"]
-[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="6_nqq0o"]
+[ext_resource type="PackedScene" uid="uid://cpu56uihpy3rm" path="res://general/player_spawn/player_spawn.tscn" id="6_nqq0o"]
 
 [node name="03" type="Node2D"]
 
@@ -64,5 +64,5 @@ position = Vector2(541, 211)
 color = Color(0.11813272, 0.14020103, 0.11620222, 1)
 blend_mode = 2
 
-[node name="Player" parent="." instance=ExtResource("6_nqq0o")]
-position = Vector2(224, 120)
+[node name="PlayerSpawn" parent="." instance=ExtResource("6_nqq0o")]
+position = Vector2(145, 131)

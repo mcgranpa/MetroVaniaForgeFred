@@ -100,6 +100,6 @@ flicker_frequency = 0.1
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_dnf12")
 position = Vector2(0, -33)
-amount = 3
+amount = 5
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_dnf12")

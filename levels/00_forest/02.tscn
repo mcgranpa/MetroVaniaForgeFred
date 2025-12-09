@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://cced2sotnp1k3" path="res://general/scripts/level_bounds.gd" id="1_epyyu"]
 [ext_resource type="PackedScene" uid="uid://coi0vcyvfj31x" path="res://general/level_transition/level_transition.tscn" id="3_epyyu"]
 [ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="3_o5ap7"]
-[ext_resource type="PackedScene" uid="uid://cfa3xni5hj64u" path="res://player/player.tscn" id="4_s2tn3"]
 [ext_resource type="PackedScene" uid="uid://28f38bmicoga" path="res://levels/props/plant.tscn" id="5_o5ap7"]
 [ext_resource type="PackedScene" uid="uid://b3c1xq1cvkdkd" path="res://levels/props/torch.tscn" id="6_tfgdr"]
 [ext_resource type="Texture2D" uid="uid://clnfwb1s4xlt4" path="res://levels/tilesets/sprites/light_stream.jpg" id="7_152a0"]
+[ext_resource type="PackedScene" uid="uid://cpu56uihpy3rm" path="res://general/player_spawn/player_spawn.tscn" id="8_lj4o7"]
 [ext_resource type="Material" uid="uid://l4p5rfj3wr28" path="res://materials_and_shaders/fog_fade_material.tres" id="8_yy75x"]
 
 [sub_resource type="Gradient" id="Gradient_vhcel"]
@@ -179,9 +179,6 @@ tile_map_data = PackedByteArray("AAD//wEAAQAXAAkAAAD//wIAAQAXAAoAAAD//wMAAQAXAAs
 tile_set = ExtResource("3_o5ap7")
 collision_enabled = false
 
-[node name="Player" parent="." instance=ExtResource("4_s2tn3")]
-position = Vector2(11, 218)
-
 [node name="props" type="Node2D" parent="."]
 position = Vector2(-65, -16)
 
@@ -339,7 +336,10 @@ autoscroll = Vector2(-15, 0)
 repeat_times = 2
 
 [node name="FogSprite" type="Sprite2D" parent="FogParallax2D2"]
-modulate = Color(0.74392873, 0.8869536, 0.6826324, 0.49019608)
+modulate = Color(0.6392157, 0.7921569, 0.7254902, 0.84313726)
 material = ExtResource("8_yy75x")
 position = Vector2(257, 241)
 texture = SubResource("NoiseTexture2D_7fi1v")
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("8_lj4o7")]
+position = Vector2(-4, 218)

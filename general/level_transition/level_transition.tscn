@@ -1,20 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://coi0vcyvfj31x"]
+[gd_scene load_steps=4 format=3 uid="uid://coi0vcyvfj31x"]
 
 [ext_resource type="Script" uid="uid://dowir548hnqwo" path="res://general/level_transition/level_transition.gd" id="1_d5xbk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d5xbk"]
+light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gers1"]
 size = Vector2(32, 32)
 
 [node name="LevelTransition" type="Node2D"]
+z_index = 99
+material = SubResource("CanvasItemMaterial_d5xbk")
 script = ExtResource("1_d5xbk")
 
 [node name="Area2D" type="Area2D" parent="."]
+use_parent_material = true
 scale = Vector2(-1, 2)
 collision_layer = 0
 collision_mask = 16
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+use_parent_material = true
 position = Vector2(16, -16)
 shape = SubResource("RectangleShape2D_gers1")
 debug_color = Color(0, 0.70196074, 0.24269311, 0.41960785)
