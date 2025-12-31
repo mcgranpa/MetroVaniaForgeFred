@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfa3xni5hj64u"]
+[gd_scene load_steps=21 format=3 uid="uid://cfa3xni5hj64u"]
 
 [ext_resource type="Script" uid="uid://dtbosehmi0bt2" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://55xw6dqq6fdy" path="res://player/states/idle.gd" id="2_rkbax"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://cl4sxcfhrc10" path="res://player/states/fall.gd" id="5_g6k8r"]
 [ext_resource type="Script" uid="uid://bwou32ufc3ba" path="res://player/states/crouch.gd" id="6_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://cen5khq5f2rux" path="res://player/sprites/hero.png" id="7_boad6"]
+[ext_resource type="Script" uid="uid://d1wvac0gjgwqe" path="res://player/scripts/input_hints.gd" id="8_hg6s5"]
+[ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="9_8t03j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
@@ -155,11 +157,13 @@ hframes = 16
 vframes = 4
 
 [node name="CollisionStand" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -23)
 shape = SubResource("CapsuleShape2D_boad6")
 debug_color = Color(0, 0.6, 0.69803923, 0.25490198)
 
 [node name="CollisionCrouch" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_rgyib")
 disabled = true
@@ -182,6 +186,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="OneWayPlatformShapeCast" type="ShapeCast2D" parent="."]
+visible = false
 position = Vector2(0, -3)
 enabled = false
 shape = SubResource("RectangleShape2D_boad6")
@@ -199,3 +204,12 @@ position = Vector2(0, -29)
 color = Color(1, 0.80195385, 0.5591886, 1)
 energy = 0.3
 texture = SubResource("GradientTexture2D_rgyib")
+
+[node name="InputHints" type="Node2D" parent="."]
+position = Vector2(0, -64)
+script = ExtResource("8_hg6s5")
+
+[node name="Sprite2D" type="Sprite2D" parent="InputHints"]
+position = Vector2(0, -1)
+texture = ExtResource("9_8t03j")
+hframes = 16

@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjnihxe6dv1ul"]
+[gd_scene load_steps=12 format=4 uid="uid://cjnihxe6dv1ul"]
 
 [ext_resource type="Texture2D" uid="uid://cen5khq5f2rux" path="res://player/sprites/hero.png" id="1_3otb6"]
+[ext_resource type="TileSet" uid="uid://jl8xm6vayrxi" path="res://levels/tilesets/forgotten_forest.tres" id="1_xtl8c"]
+[ext_resource type="Texture2D" uid="uid://x8vij5wvobi" path="res://general/save_point/save_point.png" id="2_ntenn"]
+[ext_resource type="Texture2D" uid="uid://cjvwxlnm17tdn" path="res://player/sprites/input_icons.png" id="4_er0on"]
 
 [sub_resource type="GDScript" id="GDScript_ibks0"]
 script/source = "extends Control
@@ -64,16 +67,8 @@ grow_vertical = 2
 color = Color(0.15127608, 0.15127608, 0.15127608, 1)
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="."]
-modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
-layout_mode = 1
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 134.0
-offset_bottom = 39.0
-text = "SAVE & LOAD SYSTEM"
-
 [node name="Label4" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -124,12 +119,84 @@ offset_bottom = 12.0
 texture = SubResource("GradientTexture2D_b6sl7")
 expand_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
-position = Vector2(112, 424)
-scale = Vector2(2, 2)
+position = Vector2(-19, -11)
+tile_map_data = PackedByteArray("AAD//wcAAQADAAgAAAD//wgAAQADAAkAAAD//wkAAQADAAoAAAAAAAcAAQACAAgAAAAAAAgAAQACAAkAAAAAAAkAAQACAAoAAAABAAcAAQADAAgAAAABAAgAAQADAAkAAAABAAkAAQADAAoAAAACAAcAAQACAAgAAAACAAgAAQACAAkAAAACAAkAAQACAAoAAAAGAAcAAQACAAgAAAAGAAgAAQACAAkAAAAGAAkAAQACAAoAAAAHAAcAAQADAAgAAAAHAAgAAQADAAkAAAAHAAkAAQADAAoAAAAIAAcAAQACAAgAAAAIAAgAAQACAAkAAAAIAAkAAQACAAoAAAAJAAcAAQADAAgAAAAJAAgAAQADAAkAAAAJAAkAAQADAAoAAAAKAAcAAQACAAgAAAAKAAgAAQACAAkAAAAKAAkAAQACAAoAAAALAAcAAQADAAgAAAALAAgAAQADAAkAAAALAAkAAQADAAoAAAAMAAcAAQACAAgAAAAMAAgAAQACAAkAAAAMAAkAAQACAAoAAAANAAcAAQADAAgAAAANAAgAAQADAAkAAAANAAkAAQADAAoAAAAOAAcAAQACAAgAAAAOAAgAAQACAAkAAAAOAAkAAQACAAoAAAD+/wcAAQACAAgAAAD+/wgAAQACAAkAAAD+/wkAAQACAAoAAAADAAcAAQADAAgAAAADAAgAAQADAAkAAAADAAkAAQADAAoAAAAEAAcAAQACAAgAAAAEAAgAAQACAAkAAAAEAAkAAQACAAoAAAAFAAcAAQADAAgAAAAFAAgAAQADAAkAAAAFAAkAAQADAAoAAAAPAAcAAQADAAgAAAAPAAgAAQADAAkAAAAPAAkAAQADAAoAAAAQAAcAAQACAAgAAAAQAAgAAQACAAkAAAAQAAkAAQACAAoAAAD+////AQACAAoAAAD+/wAAAQACAAsAAAD+/wEAAQADAAoAAAD/////AQADAAoAAAD//wAAAQADAAsAAAD//wEAAQADAAoAAAAAAP//AQACAAoAAAAAAAAAAQACAAsAAAAAAAEAAQAEAA4AAAABAP//AQADAAoAAAABAAAAAQADAAsAAAABAAEAAQAFAA4AAAACAP//AQACAAoAAAACAAAAAQACAAsAAAACAAEAAQACAAwAAAADAP//AQADAAoAAAADAAAAAQADAAsAAAADAAEAAQADAAwAAAAEAP//AQACAAoAAAAEAAAAAQACAAsAAAAEAAEAAQACAAwAAAAFAP//AQADAAoAAAAFAAAAAQADAAsAAAAFAAEAAQADAAwAAAAGAP//AQACAAoAAAAGAAAAAQACAAsAAAAGAAEAAQACAAwAAAAHAP//AQADAAoAAAAHAAAAAQADAAsAAAAHAAEAAQADAAwAAAAIAP//AQACAAoAAAAIAAAAAQACAAsAAAAIAAEAAQACAAwAAAAJAP//AQADAAoAAAAJAAAAAQADAAsAAAAJAAEAAQADAAwAAAAKAP//AQACAAoAAAAKAAAAAQACAAsAAAAKAAEAAQACAAwAAAALAP//AQADAAoAAAALAAAAAQADAAsAAAALAAEAAQADAAwAAAAMAP//AQACAAoAAAAMAAAAAQACAAsAAAAMAAEAAQACAAwAAAANAP//AQADAAoAAAANAAAAAQADAAsAAAANAAEAAQACAA4AAAAOAP//AQACAAoAAAAOAAAAAQACAAsAAAAOAAEAAQADAA4AAAAPAP//AQADAAoAAAAPAAAAAQADAAsAAAAPAAEAAQACAAoAAAAQAP//AQACAAoAAAAQAAAAAQACAAsAAAAQAAEAAQACAAoAAAD//wIAAQADAAwAAAAAAAIAAQAEAAwAAAABAAIAAQAFAAwAAAANAAIAAQAAAAwAAAAOAAIAAQABAAwAAAAPAAIAAQACAAwAAAD+/wIAAQADAAwAAAAQAAIAAQADAAwAAAA=")
+tile_set = ExtResource("1_xtl8c")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(223, 189)
+texture = ExtResource("2_ntenn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(153, 181)
 texture = ExtResource("1_3otb6")
 hframes = 16
 vframes = 4
-frame = 24
+frame = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, -26.5)
+texture = ExtResource("4_er0on")
+hframes = 16
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 64.0
+offset_right = 386.0
+offset_bottom = 100.0
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15294118, 0.15294118, 0.15294118, 1)
+
+[node name="Label" type="Label" parent="ColorRect2"]
+modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
+layout_mode = 1
+offset_left = 81.0
+offset_top = 6.0
+offset_right = 247.0
+offset_bottom = 29.0
+text = "SaveManager Global"
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 104.0
+offset_right = 386.0
+offset_bottom = 140.0
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15294118, 0.15294118, 0.15294118, 1)
+
+[node name="Label" type="Label" parent="ColorRect3"]
+modulate = Color(0.5890956, 0.5890956, 0.5890956, 1)
+layout_mode = 1
+offset_left = 80.0
+offset_top = 6.0
+offset_right = 246.0
+offset_bottom = 29.0
+text = "MessageBus Global"
