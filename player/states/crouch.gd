@@ -25,6 +25,8 @@ func exit() -> void:
 
 # What happens when an input is pressed?
 func handle_input( _event : InputEvent ) -> PlayerState:
+	if _event.is_action_pressed( "attack" ):
+		return attack
 	if _event.is_action_pressed( "jump" ):
 		player.one_way_platform_shape_cast.force_shapecast_update()
 		if player.one_way_platform_shape_cast.is_colliding():
