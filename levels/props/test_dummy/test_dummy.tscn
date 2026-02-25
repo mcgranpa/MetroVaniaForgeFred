@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://0gkoq16nktsr"]
+
+[ext_resource type="Script" uid="uid://jgp21cvaie8t" path="res://levels/props/test_dummy/test_dummy.gd" id="1_vx0d5"]
+[ext_resource type="Script" uid="uid://c07gr7xtt75fd" path="res://00_global/visual_effects/hit_particle_settings.gd" id="2_j8duf"]
+[ext_resource type="Texture2D" uid="uid://dpm5huqp2lu0n" path="res://general/sprites/props_destructible.png" id="2_jfbdl"]
+[ext_resource type="Script" uid="uid://ptbycb4ueu2v" path="res://general/scripts/damage_area.gd" id="3_qitiv"]
+[ext_resource type="Resource" uid="uid://d148cbaa4hl20" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_medium.tres" id="4_qiu83"]
+[ext_resource type="AudioStream" uid="uid://brhlig7gcdnh0" path="res://general/audio/hit.wav" id="7_dr2jp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jtec"]
+atlas = ExtResource("2_jfbdl")
+region = Rect2(120, 6, 4, 4)
+
+[sub_resource type="Resource" id="Resource_qiu83"]
+script = ExtResource("2_j8duf")
+count = 18
+texture = SubResource("AtlasTexture_4jtec")
+metadata/_custom_type_script = "uid://c07gr7xtt75fd"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8duf"]
+atlas = ExtResource("2_jfbdl")
+region = Rect2(17, 10, 14, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiu83"]
+atlas = ExtResource("2_jfbdl")
+region = Rect2(16, 51, 16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr2jp"]
+size = Vector2(16, 31)
+
+[node name="TestDummy" type="Node2D" unique_id=1973880548]
+script = ExtResource("1_vx0d5")
+particles = Array[ExtResource("2_j8duf")]([SubResource("Resource_qiu83"), ExtResource("4_qiu83")])
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=1280718525]
+position = Vector2(0, -9)
+texture = SubResource("AtlasTexture_j8duf")
+offset = Vector2(0, -19)
+
+[node name="BaseSprite" type="Sprite2D" parent="." unique_id=1268752155]
+position = Vector2(0, -6)
+texture = SubResource("AtlasTexture_qiu83")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1568252304]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("3_qitiv")
+audio = ExtResource("7_dr2jp")
+metadata/_custom_type_script = "uid://ptbycb4ueu2v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=831659118]
+position = Vector2(0, -32.5)
+shape = SubResource("RectangleShape2D_dr2jp")
+debug_color = Color(0, 0.6, 0.69803923, 0)

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://14njen7qc56e"]
+
+[ext_resource type="Script" uid="uid://cl8wby0ke5808" path="res://general/scripts/breakable.gd" id="1_6ng2w"]
+[ext_resource type="Script" uid="uid://c07gr7xtt75fd" path="res://00_global/visual_effects/hit_particle_settings.gd" id="2_fpmn4"]
+[ext_resource type="Resource" uid="uid://d148cbaa4hl20" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_medium.tres" id="3_jy6sd"]
+[ext_resource type="Resource" uid="uid://ba7ur0fxctc0n" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_small.tres" id="4_pfiku"]
+[ext_resource type="Resource" uid="uid://d3ro3ca8qycyr" path="res://00_global/visual_effects/hit_particle_settings/hit_wood_large.tres" id="5_1ga2j"]
+[ext_resource type="Script" uid="uid://ptbycb4ueu2v" path="res://general/scripts/damage_area.gd" id="6_11c3n"]
+[ext_resource type="Texture2D" uid="uid://dpm5huqp2lu0n" path="res://general/sprites/props_destructible.png" id="7_eo4gh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1jm5"]
+size = Vector2(40, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ng2w"]
+size = Vector2(37, 30)
+
+[node name="Crate" type="Node2D" unique_id=1998292560]
+script = ExtResource("1_6ng2w")
+hit_particles = Array[ExtResource("2_fpmn4")]([ExtResource("3_jy6sd")])
+destroy_particles = Array[ExtResource("2_fpmn4")]([ExtResource("3_jy6sd"), ExtResource("4_pfiku"), ExtResource("5_1ga2j")])
+metadata/_custom_type_script = "uid://cl8wby0ke5808"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=2009276778]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("6_11c3n")
+metadata/_custom_type_script = "uid://ptbycb4ueu2v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1933525843]
+shape = SubResource("RectangleShape2D_h1jm5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=682344288]
+position = Vector2(-19, -18)
+texture = ExtResource("7_eo4gh")
+centered = false
+region_enabled = true
+region_rect = Rect2(53, 28, 39, 35)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=888316102]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1883707847]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_6ng2w")
