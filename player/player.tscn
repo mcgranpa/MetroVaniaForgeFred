@@ -20,9 +20,6 @@
 [ext_resource type="Script" uid="uid://c4vi8yp8557x1" path="res://player/states/ball.gd" id="12_s7qer"]
 [ext_resource type="Script" uid="uid://boms7h4yk66ua" path="res://player/scripts/player_sprite.gd" id="12_x7c3f"]
 [ext_resource type="Script" uid="uid://ptbycb4ueu2v" path="res://general/scripts/damage_area.gd" id="14_kb6p2"]
-[ext_resource type="AudioStream" uid="uid://2nyikh1dnayc" path="res://general/audio/aargh.wav" id="16_32hag"]
-[ext_resource type="AudioStream" uid="uid://b0l6pik0wpskn" path="res://general/audio/jump.wav" id="18_c35mf"]
-[ext_resource type="AudioStream" uid="uid://bjxnxnlpc0kat" path="res://general/audio/land.wav" id="19_65viv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
@@ -376,7 +373,6 @@ size = Vector2(34, 58)
 
 [node name="Player" type="CharacterBody2D" unique_id=1690810131 groups=["Player"]]
 z_index = 1
-position = Vector2(1, 0)
 collision_layer = 16
 collision_mask = 3
 floor_constant_speed = true
@@ -564,21 +560,6 @@ debug_color = Color(0, 0.6, 0.69803923, 0.25490198)
 
 [node name="AudioStreams" type="Node2D" parent="." unique_id=1248959500]
 position = Vector2(0, -27)
-
-[node name="HurtAudio" type="AudioStreamPlayer2D" parent="AudioStreams" unique_id=970487203]
-unique_name_in_owner = true
-stream = ExtResource("16_32hag")
-bus = &"SFX"
-
-[node name="JumpAudio" type="AudioStreamPlayer2D" parent="AudioStreams" unique_id=1249411700]
-unique_name_in_owner = true
-stream = ExtResource("18_c35mf")
-bus = &"SFX"
-
-[node name="LandAudio" type="AudioStreamPlayer2D" parent="AudioStreams" unique_id=1240083569]
-unique_name_in_owner = true
-stream = ExtResource("19_65viv")
-bus = &"SFX"
 
 [node name="BallRays" type="Node2D" parent="." unique_id=1892625141]
 visible = false

@@ -1,8 +1,7 @@
 class_name PlayerStateJump extends PlayerState
+const JUMP = preload("uid://b0l6pik0wpskn")
 
 @export var jump_velocity : float = 450.0
-
-@onready var jump_audio: AudioStreamPlayer2D = %JumpAudio
 
 
 # What happens when this state is initialized?
@@ -78,7 +77,7 @@ func do_jump() -> void:
 			return
 	player.jump_count += 1
 	player.velocity.y = -jump_velocity
-	jump_audio.play()
+	Audio.play_spatial_sound( JUMP, player.global_position, false, true, 0.25 )
 	pass
 
 

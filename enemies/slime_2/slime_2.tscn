@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://ckvrvva6tg48" path="res://enemies/scripts/states/es_death.gd" id="10_ovel5"]
 [ext_resource type="AudioStream" uid="uid://dewyjcqej02w" path="res://enemies/slime/slime_death.wav" id="11_ovel5"]
 [ext_resource type="Script" uid="uid://bdsfqblna5q7o" path="res://enemies/scripts/sensors/edge_sensor.gd" id="12_ovel5"]
+[ext_resource type="Script" uid="uid://4x848ophrw7x" path="res://enemies/scripts/sensors/player_sensor.gd" id="13_3jlja"]
+[ext_resource type="Script" uid="uid://c5lnloigumv6o" path="res://enemies/scripts/enemy_hit_particles.gd" id="14_dq0sk"]
+[ext_resource type="Script" uid="uid://c07gr7xtt75fd" path="res://00_global/visual_effects/hit_particle_settings.gd" id="15_uucha"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7cba3"]
 radius = 8.0
@@ -98,6 +101,58 @@ _data = {
 &"walk": SubResource("Animation_dq0sk")
 }
 
+[sub_resource type="GDScript" id="GDScript_3jlja"]
+script/source = "extends Label
+
+@onready var player_sensor: PlayerSensor = $\"../PlayerSensor\"
+@onready var slime_2: Enemy = $\"..\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(_delta: float) -> void:
+	text = \"\"
+	text = \"target = \"
+	text += slime_2.blackboard.target.name if slime_2.blackboard.target else \"\"
+	text += \"\\n  dist = \"
+	text += str( slime_2.blackboard.distance_to_target )
+	pass
+"
+
+[sub_resource type="Gradient" id="Gradient_dq0sk"]
+offsets = PackedFloat32Array(0.5208333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uucha"]
+gradient = SubResource("Gradient_dq0sk")
+width = 4
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Resource" id="Resource_qpicr"]
+script = ExtResource("15_uucha")
+count = 12
+color = Color(0, 0.58991456, 1, 1)
+texture = SubResource("GradientTexture2D_uucha")
+metadata/_custom_type_script = "uid://c07gr7xtt75fd"
+
+[sub_resource type="Resource" id="Resource_vpnvx"]
+script = ExtResource("15_uucha")
+count = 24
+color = Color(0, 0.58991456, 1, 1)
+metadata/_custom_type_script = "uid://c07gr7xtt75fd"
+
+[sub_resource type="Resource" id="Resource_7lkcl"]
+script = ExtResource("15_uucha")
+color = Color(0.9998151, 0.99993056, 1, 1)
+metadata/_custom_type_script = "uid://c07gr7xtt75fd"
+
 [node name="Slime2" type="CharacterBody2D" unique_id=1628672036]
 collision_layer = 0
 collision_mask = 3
@@ -149,6 +204,7 @@ metadata/_custom_type_script = "uid://i3qn4pbsaesp"
 [node name="ESWalk" type="Node" parent="EnemyStateMachine" unique_id=1698541953]
 unique_name_in_owner = true
 script = ExtResource("8_482dd")
+walk_speed = 0.0
 metadata/_custom_type_script = "uid://dywm0814cbsui"
 
 [node name="ESStun" type="Node" parent="EnemyStateMachine" unique_id=1893312370]
@@ -171,3 +227,24 @@ position = Vector2(7, 0)
 target_position = Vector2(0, 8)
 script = ExtResource("12_ovel5")
 metadata/_custom_type_script = "uid://bdsfqblna5q7o"
+
+[node name="PlayerSensor" type="Area2D" parent="." unique_id=976150026]
+position = Vector2(0, -7)
+script = ExtResource("13_3jlja")
+metadata/_custom_type_script = "uid://4x848ophrw7x"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor" unique_id=282976908]
+modulate = Color(1, 1, 1, 0.34901962)
+polygon = PackedVector2Array(0, 0, 256, -128, 256, 128)
+
+[node name="Label" type="Label" parent="." unique_id=711078983]
+offset_right = 40.0
+offset_bottom = 15.0
+script = SubResource("GDScript_3jlja")
+
+[node name="EnemyHitParticles" type="Marker2D" parent="." unique_id=638049467]
+position = Vector2(0, -7)
+script = ExtResource("14_dq0sk")
+hit_particles = Array[ExtResource("15_uucha")]([SubResource("Resource_qpicr")])
+death_particles = Array[ExtResource("15_uucha")]([SubResource("Resource_vpnvx"), SubResource("Resource_7lkcl")])
+metadata/_custom_type_script = "uid://c5lnloigumv6o"

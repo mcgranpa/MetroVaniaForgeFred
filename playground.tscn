@@ -59,6 +59,7 @@ func play_sound() -> void:
 "
 
 [node name="Playground" type="Node2D" unique_id=1263781287]
+position = Vector2(-1, 0)
 script = SubResource("GDScript_ynsuh")
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=1301445981]
@@ -106,7 +107,7 @@ position = Vector2(420, 263)
 position = Vector2(749, 267)
 
 [node name="PlayerSpawn" parent="." unique_id=526678327 instance=ExtResource("4_ynsuh")]
-position = Vector2(535, 252)
+position = Vector2(505, 259)
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1333058529]
 script = ExtResource("7_ynsuh")
